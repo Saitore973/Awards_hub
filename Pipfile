@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 django = "*"
 django-bootstrap3 = "*"
+psycopg2 = "*"
 
 [dev-packages]
 
