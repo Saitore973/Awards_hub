@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
 from pathlib import Path
+import cloudinary
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -129,7 +130,15 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
+cloudinary.config(
+    cloud_name="daopigwzi", 
+    api_key="811513624916461", 
+    api_secret="nlATc3MD62DCkj3M2qjXmiNvAuU"
+    # cloud_name=config('YOUR_CLOUD_NAME'),
+    # api_key=config('YOUR_API_KEY'),
+    # api_secret=config('YOUR_API_SECRET'),
+    # secure=True
+)
 
 LOGOUT_REDIRECT_URL = "welcome"
 LOGIN_REDIRECT_URL='welcome'
