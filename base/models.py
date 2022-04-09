@@ -39,3 +39,21 @@ class Project(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user',null=True)
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='profile',null=True)
+
+    class Meta:
+        ordering = ['-updated','-created']
+    
+    def __str__(self):
+        return self.name 
+    
+    
+    def save_image(self):
+        self.save()
+
+    def delete_image(self):
+        self.delete()
+
+    def update_description(self, description, name):
+        self.caption = description
+        self.name = name
+        self.save()
