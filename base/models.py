@@ -40,6 +40,11 @@ class Project(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user',null=True)
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='profile',null=True)
 
+    @classmethod
+    def search_by_title(cls,search_term):
+        projects = cls.objects.filter(title__icontains=search_term)
+        return projects
+
     class Meta:
         ordering = ['-updated','-created']
     

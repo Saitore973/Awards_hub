@@ -65,6 +65,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -139,6 +140,9 @@ cloudinary.config(
     # api_secret=config('YOUR_API_SECRET'),
     # secure=True
 )
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGOUT_REDIRECT_URL = "welcome"
 LOGIN_REDIRECT_URL='welcome'

@@ -9,7 +9,7 @@
 
 {% block content %}
 {{block.super}}
-<div class="container">
+<div class="container-fluid">
 
   <!-- Looping through news   -->
   {% for project in projects %}
@@ -17,7 +17,9 @@
   <div class="row">
     <!-- displaying News articles -->
     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-      <h2 class="text-center"> {{ project.title }} </h2>
+      
+     <img src="{{project.image.url}}" alt="pic" width="1450">
+     <h2 class="text-center"> {{ project.title }} </h2>
     </div>
 
   </div>
