@@ -8,21 +8,21 @@
 
 {% block content %}
 {{block.super}}
-<div class="container">
+<div class="container-fluid">
   <h3>
     I have alot of photos to different memories, i dump them here😀
   </h3>
   <div class="row">
     {% for project in projects %}
    
-            <div class="col-md-4 photo ">
-        <img src="{{project.image.url}}" class="img-responsive" data-toggle="modal" data-target="#{{image.id}}"
+            <div class="col-md-3 photo ">
+        <img src="{{project.image.url}}" class="img-responsive" data-toggle="modal" data-target="#{{project.id}}"
           style="width: 300px; height: 200px;" alt="Image">
       </div>
    
 
 
-            <div class="modal fade " id="{{image.id}}" tabindex="-1" role="dialog"
+            <div class="modal fade " id="{{project.id}}" tabindex="-1" role="dialog"
                  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-md" role="document">
                     <div class="modal-content modalcard">
@@ -33,7 +33,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <img src="{{image.image.url}}" alt="{{image.name}}" class="img-fluid">
+                            <img src="{{project.image.url}}" alt="{{image.name}}" class="img-fluid">
                             <p class="imgdesc text-center">{{image.Details}}</p>
                            
                              <a href="/location/{{image.location}}" class="btn btn-sm btn-outline-info">{{image.location}}</a>
@@ -48,6 +48,9 @@
                     </div>
                 </div>
             </div>
+
+            <div class="container">
+  
             {% endfor %}
 {% endblock %}
 
