@@ -1,0 +1,28 @@
+{% extends 'awardss/base.html' %} {% load static %} {% block head %}
+<link rel="stylesheet" href="{% static 'css/edit_profile.css' %}"> {% endblock %} {% block content %}
+<section class="create">
+    <article class="create-container">
+        <form action="" class="create-form" method="post" enctype=multipart/form-data>
+            {% csrf_token %}
+            <div class="create-form-title">
+                <h1>Edit Profile</h1>
+            </div>
+            <div class="create-form-image">
+                {{form.as_p}}
+            </div>
+            <div class="create-form-submit">
+                <button type="submit">Update</button>
+            </div>
+        </form>
+
+    </article>
+    {% for post in profile.profile.all %}
+            
+            {% endfor %}
+
+            {{ user.username }}
+            <img src="{{user.profile.profilePhoto.url }}" alt="">
+            
+            {{user.profile.bio}}
+</section>
+{% endblock %}

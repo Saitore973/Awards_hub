@@ -1,8 +1,12 @@
 from django.http import Http404
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-
-from base.models import Project
+from .forms import  ProjectForm, ProfileForm
+from base.models import Project, Profile
+from .forms import UserRegistrationForm,EditProfileForm 
+from django.contrib.auth.models import User
+from django.contrib import messages
+from django.contrib.auth import login, logout
 
 # Create your views here.
 @login_required(login_url='/accounts/login/')
@@ -29,3 +33,44 @@ def project(request,project_id):
     except ValueError:
         raise Http404()
     return render(request,"awardss/project.html", {"project":project})
+
+
+def profile(request, id):
+    profile = Profile.objects.get(user=id)
+    userid = request.user.id
+    form = ProfileForm(instance=profile)
+
+    return render(request, 'awardss/profile.html',{"profile":profile,"form":form, "userid":userid})
+
+def create(request):
+    form = ProjectForm()
+    userid = request.user.id
+    if request.method == 'POST':
+        form = ProjectForm(request.POST, request.FILES)
+        if form.is_valid():
+            image = form.cleaned_data['image']
+            title = form.cleaned_data['title']
+            description = form.cleaned_data['description']
+            user_of_post = request.user
+            post = Project(image=image,title=title, description=description,user=user_of_post)
+            post.save()
+            return redirect('welcome')
+    return render(request, 'awardss/create.html', {"form":form,"userid":userid})
+
+
+
+def edit(request, id):
+    form = ProfileForm()
+    userid = request.user.id
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            profilePhoto = form.cleaned_data['profilePhoto']
+            bio = form.cleaned_data['bio']
+            user_of_post = request.user
+            post = Profile(profilePhoto=profilePhoto,bio=bio, user=user_of_post)
+            post.save()
+            return redirect('welcome')
+    return render(request, 'awardss/edit.html', {"form":form})
+
+
