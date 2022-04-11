@@ -8,19 +8,17 @@
 
 {% block content %}
 {{block.super}}
-<div class="container-fluid">
-  <h3>
-    I have alot of photos to different memories, i dump them here😀
-  </h3>
+<div class="container">
+  <h1>{{project.link}}</h1>
   <div class="row">
     {% for project in projects %}
    
-            <div class="col-md-3 photo ">
+            <div class="col-md-6 photo ">
         <img src="{{project.image.url}}" class="img-responsive" data-toggle="modal" data-target="#{{project.id}}"
            alt="Image">
       </div>
    
-
+      
 
             <div class="modal fade " id="{{project.id}}" tabindex="-1" role="dialog"
                  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

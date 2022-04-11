@@ -14,6 +14,8 @@ def welcome(request):
     projects = Project.objects.all()  
     return render(request, 'index.html', {"projects": projects})
 
+
+@login_required(login_url='/accounts/login/')
 def search_results(request):
 
     if 'projects' in request.GET and request.GET["projects"]:
@@ -27,6 +29,8 @@ def search_results(request):
         message = "You haven't searched for any term"
         return render(request, 'awardss/search.html',{"message":message})
 
+
+@login_required(login_url='/accounts/login/')
 def project(request,project_id):
     try:
         project = Project.objects.get(id = project_id)
@@ -34,7 +38,7 @@ def project(request,project_id):
         raise Http404()
     return render(request,"awardss/project.html", {"project":project})
 
-
+@login_required(login_url='/accounts/login/')
 def profile(request, id):
     profile = Profile.objects.get(user=id)
     userid = request.user.id
@@ -42,6 +46,8 @@ def profile(request, id):
 
     return render(request, 'awardss/profile.html',{"profile":profile,"form":form, "userid":userid})
 
+
+@login_required(login_url='/accounts/login/')
 def create(request):
     form = ProjectForm()
     userid = request.user.id
@@ -50,6 +56,7 @@ def create(request):
         if form.is_valid():
             image = form.cleaned_data['image']
             title = form.cleaned_data['title']
+            link = form.cleaned_data['link']
             description = form.cleaned_data['description']
             user_of_post = request.user
             post = Project(image=image,title=title, description=description,user=user_of_post)
@@ -58,7 +65,7 @@ def create(request):
     return render(request, 'awardss/create.html', {"form":form,"userid":userid})
 
 
-
+@login_required(login_url='/accounts/login/')
 def edit(request, id):
     form = ProfileForm()
     userid = request.user.id

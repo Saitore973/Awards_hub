@@ -36,6 +36,7 @@ class Project(models.Model):
     image = CloudinaryField('image')
     title = models.CharField(max_length=20)
     description = models.TextField()
+    link = models.URLField(max_length=222,)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user',null=True)

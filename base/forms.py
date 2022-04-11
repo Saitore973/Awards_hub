@@ -15,7 +15,7 @@ from django.forms import EmailInput, TextInput, PasswordInput, FileInput
 class ProjectForm(ModelForm):
     class Meta:
         model = Project
-        fields = ['image','title','description']
+        fields = ['image','title','description','link']
         
         
 # class CommentForm(ModelForm):
