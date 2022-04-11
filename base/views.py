@@ -74,3 +74,17 @@ def edit(request, id):
     return render(request, 'awardss/edit.html', {"form":form})
 
 
+def rate(request):
+    form = ProjectForm()
+    userid = request.user.id
+    if request.method == 'POST':
+        form = ProjectForm(request.POST, request.FILES)
+        if form.is_valid():
+            image = form.cleaned_data['image']
+            title = form.cleaned_data['title']
+            description = form.cleaned_data['description']
+            user_of_post = request.user
+            post = Project(image=image,title=title, description=description,user=user_of_post)
+            post.save()
+            return redirect('welcome')
+    return render(request, 'awardss/rate.html', {"form":form,"userid":userid})
