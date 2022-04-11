@@ -11,6 +11,11 @@ django-registration = "*"
 cloudinary = "*"
 django-tinymce = "*"
 django-bootstrap4 = "*"
+whitenoise = "*"
+django-heroku = "*"
+gunicorn = "*"
+python-decouple = "*"
+dj-database-url = "*"
 
 [dev-packages]
 
