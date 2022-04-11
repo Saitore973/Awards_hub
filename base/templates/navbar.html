@@ -10,14 +10,28 @@
 
 <style>
   .navbar {
-    background-color: red;
+    background-color: rgb(224, 193, 190);
 
   }
 
   .profile {
     float: right;
     padding-right: 130px;
-    padding-top: 20px;
+    padding-top: 17px;
+  }
+  .acc{
+    padding-top:17px;
+  }
+
+  .fom{
+    padding-top:9px;
+  }
+
+  button{
+    padding: 5px 17px;
+    border: none;
+    color: black;
+    background-color:rgb(240, 233, 232);
   }
 </style>
 
@@ -28,12 +42,12 @@
 
         <div class="row">
           <div class="col-sm-4 col-md-4 ">
-            <a class="navbar-brand" href="{% url 'welcome' %}">Awardss</a>
+            <a class="navbar-brand" href="{% url 'welcome' %}"> <button>Awardss</button> </a>
           </div>
           <div class="col-sm-4 col-md-4  ">
             {% if user.is_authenticated %}
             <ul>
-              <li class="dropdown">
+              <li class="dropdown acc">
                 <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button"
                   aria-expanded="false">Account
                   <span class="caret"></span>
@@ -78,7 +92,7 @@
           <!-- Adding a search form  -->
           <div class="col-sm-4 col-md-4 ">
 
-            <form class="navbar-form" role="search" action="{% url 'search_results' %}">
+            <form class="navbar-form fom" role="search" action="{% url 'search_results' %}">
 
               <div class="input-group">
                 <input type="text" class="form-control" placeholder="Search Article" name="article">
