@@ -8,70 +8,97 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
+<style>
+  .navbar {
+    background-color: red;
+
+  }
+
+  .profile {
+    float: right;
+    padding-right: 130px;
+    padding-top: 20px;
+  }
+</style>
+
 <body>
-  <nav class="navbar navbar-inverse">
+  <nav class="navbar ">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="{% url 'welcome' %}">Awardss</a>
-        <div class="nav-links-profile">
-          <div>
-            <a href="{% url 'edit' user.id %}">
-              {% if user.id == userid %}
-              {% if not user.profile.profilePhoto.url %}
-              <img src="{% static 'images/default.jpg'%}" alt="profile"> {% else %}
-              <img src="{{user.profile.profilePhoto.url}}" alt="profile"> {% endif %}
-              {% else %}
-              <img src="{% static 'images/default.jpg'%}" alt="profile">
-              {% endif %}
-            </a>
+
+        <div class="row">
+          <div class="col-sm-4 col-md-4 ">
+            <a class="navbar-brand" href="{% url 'welcome' %}">Awardss</a>
           </div>
-        </div>
-        <div class="col-sm-6 col-md-6">
-          {% if user.is_authenticated %}
-          <ul>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button"
-                aria-expanded="false">Account
-                <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu" role="menu">
-                <li>
-                  <a href="{%url 'welcome'%}">Home</a>
-                </li>
-                <li>
-                  <a href="/accounts/password/change/reset">Change Password</a>
-                </li>
-                <li>
-                  <a href="/logout">Logout</a>
-                </li>
-              </ul>
+          <div class="col-sm-4 col-md-4  ">
+            {% if user.is_authenticated %}
+            <ul>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button"
+                  aria-expanded="false">Account
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                  <li>
+                    <a href="{%url 'welcome'%}">Home</a>
+                  </li>
+                  <li>
+                    <a href="/accounts/password/change/reset">Change Password</a>
+                  </li>
+                  <li>
+                    <a href="/logout">Logout</a>
+                  </li>
+                  <li>
+                    <div class="col ">
+                      <div class="nav-links-profile">
+                        <div>
+                          <a href="{% url 'edit' user.id %}">
+                            {% if user.id == userid %}
+                            {% if not user.profile.profilePhoto.url %}
+                            <img src="{% static 'images/default.jpg'%}" alt="profile"> {% else %}
+                            <img src="{{user.profile.profilePhoto.url}}" alt="profile"> {% endif %}
+                            {% else %}
+                            <img src="{% static 'images/default.jpg'%}" alt="profile">
+                            {% endif %}
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            {% else %}
+            <li>
+              <a class='btn btn-default' href="/accounts/login">Login</a>
             </li>
-          </ul>
-          {% else %}
-          <li>
-            <a class='btn btn-default' href="/accounts/login">Login</a>
-          </li>
 
-          {% endif %}
-        </div>
-        <!-- Adding a search form  -->
-        <div class="col-sm-4 col-md-4 navbar-right">
+            {% endif %}
+          </div>
+          <!-- Adding a search form  -->
+          <div class="col-sm-4 col-md-4 ">
 
-          <form class="navbar-form" role="search" action="{% url 'search_results' %}">
+            <form class="navbar-form" role="search" action="{% url 'search_results' %}">
 
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search Article" name="article">
-              <div class="input-group-btn">
-                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search Article" name="article">
+                <div class="input-group-btn">
+                  <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                </div>
               </div>
-            </div>
 
-          </form>
+            </form>
+          </div>
+
+
+
+
+
         </div>
-
-
-
       </div>
+
+
+<a class="profile" href="{% url 'create' %}"> <button>Submit your site</button></a>
   </nav>
 </body>
 
