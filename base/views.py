@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .forms import  ProjectForm, ProfileForm
 from base.models import Project, Profile
-from .forms import UserRegistrationForm,EditProfileForm 
+
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import login, logout

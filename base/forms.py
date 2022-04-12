@@ -32,19 +32,19 @@ class ProfileForm(ModelForm):
 # class SearchForm(forms.Form):
 #     name = forms.CharField(max_length=30)
 
-class UserRegistrationForm(UserCreationForm):
-    class Meta:
-        model = User
-        fields = ['username', 'email', 'password1', 'password2']
-        widgets = {
-            'username': TextInput(attrs={'class': 'form-control'}),
-            'email': EmailInput(attrs={'class': 'form-control'})
-        }
+# class UserRegistrationForm(UserCreationForm):
+#     class Meta:
+#         model = User
+#         fields = ['username', 'email', 'password1', 'password2']
+#         widgets = {
+#             'username': TextInput(attrs={'class': 'form-control'}),
+#             'email': EmailInput(attrs={'class': 'form-control'})
+#         }
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['password1'].widget.attrs['class'] = 'form-control'
-        self.fields['password2'].widget.attrs['class'] = 'form-control'
+#     def __init__(self, *args, **kwargs):
+#         super().__init__(*args, **kwargs)
+#         self.fields['password1'].widget.attrs['class'] = 'form-control'
+#         self.fields['password2'].widget.attrs['class'] = 'form-control'
 
 class EditProfileForm(forms.ModelForm):
     class Meta:

@@ -1,28 +1,61 @@
 {% extends 'awardss/base.html' %} {% load static %} {% block head %}
-<link rel="stylesheet" href="{% static 'css/edit_profile.css' %}"> {% endblock %} {% block content %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}"> {% endblock %} {% block content %}
+<style>
+    h1{
+        color: rgb(233, 175, 170);
+    }
+    .row{
+        text-align: center;
+    }
+    .text{
+        text-decoration: underline;
+    }
+    .fom{
+       float: left;
+    }
+    span{
+        color: black;
+        font-size:20px;
+    }
+    
+    
+</style>
 <section class="create">
-    <article class="create-container">
-        <form action="" class="create-form" method="post" enctype=multipart/form-data>
-            {% csrf_token %}
-            <div class="create-form-title">
-                <h1>Edit Profile</h1>
-            </div>
-            <div class="create-form-image">
-                {{form.as_p}}
-            </div>
-            <div class="create-form-submit">
-                <button type="submit">Update</button>
-            </div>
-        </form>
+    <div class="row">
+        
+        <div class="col-md-4">
+            <article class="create-container">
+                <form action="" class="create-form" method="post" enctype=multipart/form-data> {% csrf_token %} <div
+                    class="create-form-title">
+                    <h1>Edit Profile</h1>
 
-    </article>
-    {% for post in profile.profile.all %}
-            
+                    <div class="create-form-image fo">
+                        {{form.as_p}}
+                    </div>
+                    
+                </form>
+
+            </article>
+        </div>
+
+        <div class="col-md-4">
+            <h1 class='text'>Your Profile</h1>
+            {% for post in profile.profile.all %}
+
             {% endfor %}
 
-            {{ user.username }}
+           <h1> <span>Username: </span> {{ user.username }}</h1> 
             <img src="{{user.profile.profilePhoto.url }}" alt="">
-            
-            {{user.profile.bio}}
+
+            <h4> <span>Bio: </span> {{user.profile.bio}}</h4>
+        </div>
+        
+    </div>
+
+
+<div class="create-form-submit">
+                        <button type="submit">Update</button>
+                    </div>
+
 </section>
 {% endblock %}
