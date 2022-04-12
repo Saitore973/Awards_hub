@@ -8,13 +8,15 @@ This project allows users to post their projects for other users to rate accordi
  Click [View Site](https://awa2d.herokuapp.com/)  to visit the site
   
 ## Screenshots 
-###### Home page
+###### Login
  
 <img src="static/images/1.png" width="900px" height="440px">
  
- ###### Rating of a post
- <img src=""> 
+ ###### Home page
+<img src="static/images/2.png" width="900px" height="440px">
 
+###### Details
+<img src="static/images/3.png" width="900px" height="440px">
 
  
 ## User Story  
