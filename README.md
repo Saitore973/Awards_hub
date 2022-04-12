@@ -10,7 +10,7 @@ This project allows users to post their projects for other users to rate accordi
 ## Screenshots 
 ###### Home page
  
-<img src="/static/images/1.png">
+<img src="static/images/1.png" width="900px" height="440px">
  
  ###### Rating of a post
  <img src=""> 
